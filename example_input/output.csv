@@ -1,6 +1,0 @@
-FIlename,Prediction,Confidence
-example_input/Normal (54).jpg,Normal,1.0
-example_input/Normal (32).jpg,Normal,1.0
-example_input/TB (46).png,Tuberculosis,0.9975337
-example_input/TB (65).png,Tuberculosis,0.99928707
-example_input/TB (2).png,Tuberculosis,0.9999974
