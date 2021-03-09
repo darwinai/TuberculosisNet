@@ -15,7 +15,7 @@ If there are any technical questions after the README, FAQ, and past/current iss
 
 ## Table of Contents ##
 1. [Requirements](#requirements) to install on your system
-2. [Dataset recreation](#datasetrecreation)
+2. [Dataset recreation](#dataset recreation)
 3. Steps for [training, evaluation and inference](docs/train_eval_inference.md) of TB-Net
 4. [Results](#results)
 5. [Links to pretrained models](docs/models.md)
