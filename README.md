@@ -34,7 +34,7 @@ The main requirements are listed below. A full list can be found in "requirement
 To recreate the dataset that we used for our experiments, perform the following steps:
 1. Download the original dataset [here](https://www.kaggle.com/tawsifurrahman/tuberculosis-tb-chest-xray-dataset).
 2. Extract the files.
-3. Run the 'create_dataset.py' script, making sure to point the 'datapath' argument at the root directory containing the extracted files. This script will perform pre-processing on all the images, converting them into the format we used. 
+3. Run the `create_dataset.py` script, making sure to point the 'datapath' argument at the root directory containing the extracted files. This script will perform pre-processing on all the images, converting them into the format we used. 
 4. Wait for the processing to complete.
 
 ## Results ##
