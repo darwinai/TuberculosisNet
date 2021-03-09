@@ -5,8 +5,11 @@ If you wish to run inference on specific images, use the
 inference.py script instead.
 
 Example command:
-python3 eval.py --weightspath 'TBNet-A' --metaname 'model_eval.meta' \
---ckptname 'model-69300' --datapath 'data/' --testcsv 'test_split.csv'
+python3 eval.py \
+    --weightspath 'TB-Net' \
+    --metaname model_eval.meta \
+    --ckptname model-69300 \
+    --datapath 'data/'
 '''
 
 import os
@@ -26,12 +29,10 @@ tf.logging.set_verbosity(tf.logging.ERROR)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 parser = argparse.ArgumentParser(description='TB-Net Evaluation')
-parser.add_argument('--weightspath', default='TBNet-A', type=str, help='Path to checkpoint folder')
+parser.add_argument('--weightspath', default='TB-Net', type=str, help='Path to checkpoint folder')
 parser.add_argument('--metaname', default='model_eval.meta', type=str, help='Name of ckpt meta file')
 parser.add_argument('--ckptname', default='model-69300', type=str, help='Name of model ckpt')
-parser.add_argument('--datapath', default='datapath.csv', type=str, help='CSV file containing the test filenames')
-parser.add_argument('--testcsv', default='test_split.csv', type=str, help='CSV file containing the test filenames')
-
+parser.add_argument('--datapath', default='data/', type=str, help='Root folder containing the dataset')
 
 args = parser.parse_args()
 

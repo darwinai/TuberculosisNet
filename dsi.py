@@ -11,6 +11,11 @@ IMG_HEIGHT = 224
 IMG_WIDTH = 224
 NUM_CLASSES = 2
 
+# Point these paths to the corresponding csv files
+TRAIN_CSV_PATH = 'train_split.csv'
+VAL_CSV_PATH = 'val_split.csv'
+TEST_CSV_PATH = 'test_split.csv'
+
 # Chance that a random augmentation will be performed on an image
 AUGMENTATION_CHANCE = 1.0
 
@@ -132,13 +137,13 @@ class TBNetDSI:
         return dataset, num_data // num_shards, batch_size
 
     def get_train_dataset(self, num_shards=1, shard_index=0):
-        dataset, num_data, batch_size = self.get_split("train_split.csv", "train", num_shards, shard_index)
+        dataset, num_data, batch_size = self.get_split(TRAIN_CSV_PATH, "train", num_shards, shard_index)
         return dataset, num_data, batch_size
 
     def get_validation_dataset(self, num_shards=1, shard_index=0):
-        dataset, num_data, batch_size = self.get_split("val_split.csv", "val", num_shards, shard_index)
+        dataset, num_data, batch_size = self.get_split(VAL_CSV_PATH, "val", num_shards, shard_index)
         return dataset, num_data, batch_size
 
     def get_test_dataset(self):
-        dataset, num_data, batch_size = self.get_split("test_split.csv", "test")
+        dataset, num_data, batch_size = self.get_split(TEST_CSV_PATH, "test")
         return dataset, num_data, batch_size

@@ -1,6 +1,5 @@
 '''
-Contains utility functions for preprocessing
-Needed for the eval_tbnet and test_tbnet scripts
+Contains utility functions for preprocessing data
 '''
 
 import os

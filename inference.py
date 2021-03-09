@@ -4,8 +4,11 @@ The output will be in a CSV file named "output.csv", located in
 the same folder that the images are contained.
 
 Example command:
-python3 inference.py --weightspath 'TBNet-A' --metaname 'model_eval.meta' \
---ckptname 'model-69300' --inputpath 'example_inputs/'
+python3 inference.py \
+    --weightspath 'TB-Net' \
+    --metaname model_eval.meta \
+    --ckptname model-69300 \
+    --inputpath 'example_inputs/'
 '''
 
 import os
@@ -30,7 +33,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 mapping = {0: "Normal", 1: "Tuberculosis"} 
 
 parser = argparse.ArgumentParser(description='TB-Net Inference')
-parser.add_argument('--weightspath', default='TBNet-A', type=str, help='Path to checkpoint folder')
+parser.add_argument('--weightspath', default='TB-Net', type=str, help='Path to checkpoint folder')
 parser.add_argument('--metaname', default='model_eval.meta', type=str, help='Name of ckpt meta file')
 parser.add_argument('--ckptname', default='model-69300', type=str, help='Name of model ckpt')
 parser.add_argument('--inputpath', default='example_inputs/', type=str, help='Full path to folder containing images')
