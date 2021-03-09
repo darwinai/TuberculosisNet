@@ -25,7 +25,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 INPUT_TENSOR = "image:0"
 LABEL_TENSOR = "classification/label:0"
 LOSS_TENSOR = "add:0"
-OUTPUT_TENSOR = "ArgMax:0" 
+PREDICTION_TENSOR = "ArgMax:0" 
 
 parser = argparse.ArgumentParser(description='TB-Net Training')
 parser.add_argument('--weightspath', default='TB-Net', type=str, help='Path to checkpoint folder')
@@ -46,19 +46,16 @@ VALIDATE_EVERY = 5
 '''
 Runs evaluation on the model using the test dataset
 '''
-def eval(sess, graph, val_or_test, image_tensor, label_tensor, output_tensor, loss_tensor):
+def eval(sess, graph, val_or_test, dataset, image_tensor, label_tensor, pred_tensor, loss_tensor):
     y_test = []
     predictions = []
     num_evaled = 0
     total_loss = 0
 
-    if val_or_test == "test":
-        iterator = test_dataset.make_initializable_iterator()
-    else:
-        iterator = val_dataset.make_initializable_iterator()
+    iterator = dataset.make_initializable_iterator()
     datasets = {}
     datasets[val_or_test] = {
-        'dataset': test_dataset if val_or_test == "test" else val_dataset,
+        'dataset': dataset,
         'iterator': iterator,
         'gn_op': iterator.get_next(),
     }
@@ -70,7 +67,7 @@ def eval(sess, graph, val_or_test, image_tensor, label_tensor, output_tensor, lo
             images = data_dict['image']
             labels = data_dict['label/one_hot'].argmax(axis=1)
 
-            pred = sess.run(output_tensor, feed_dict={image_tensor: images})
+            pred = sess.run(pred_tensor, feed_dict={image_tensor: images})
             predictions.append(pred)
             y_test.append(labels)
             num_evaled += len(pred)
@@ -95,16 +92,20 @@ def eval(sess, graph, val_or_test, image_tensor, label_tensor, output_tensor, lo
     print('PPV Normal: {0:.3f}, Tuberculosis {1:.3f}'.format(ppvs[0],ppvs[1]))
 
 
+# Load the datasets
+dsi = TBNetDSI(data_path=args.datapath)
+train_dataset, train_dataset_size, train_batch_size = dsi.get_train_dataset()
+val_dataset, _, _ = dsi.get_validation_dataset()
+test_dataset, _, _ = dsi.get_test_dataset()
+
 sess = tf.Session()
-tf.get_default_graph()
 saver = tf.train.import_meta_graph(os.path.join(args.weightspath, args.metaname))
-saver.restore(sess, os.path.join(args.weightspath, args.ckptname))
 
 graph = tf.get_default_graph()
 
 image_tensor = graph.get_tensor_by_name(INPUT_TENSOR)
 label_tensor = graph.get_tensor_by_name(LABEL_TENSOR)
-output_tensor = graph.get_tensor_by_name(OUTPUT_TENSOR)
+pred_tensor = graph.get_tensor_by_name(PREDICTION_TENSOR)
 loss_tensor = graph.get_tensor_by_name(LOSS_TENSOR)
 
 # Define loss and optimizer
@@ -115,21 +116,18 @@ train_op = optimizer.minimize(loss_tensor)
 init = tf.global_variables_initializer()
 sess.run(init)
 
-# Load the datasets
-dsi = TBNetDSI(data_path=args.datapath)
-test_dataset, _, _ = dsi.get_test_dataset()
+# Load weights
+saver.restore(sess, os.path.join(args.weightspath, args.ckptname))
 
 # save base model
 saver.save(sess, os.path.join(OUTPUT_PATH, "Baseline/TB-Net"))
 print('Saved baseline checkpoint')
 print('Baseline eval:')
 
-eval(sess, graph, "test", image_tensor, label_tensor, output_tensor, loss_tensor)
+eval(sess, graph, "test", test_dataset, image_tensor, label_tensor, pred_tensor, loss_tensor)
 
 # Training cycle
 print('Training started')
-train_dataset, train_dataset_size, train_batch_size = dsi.get_train_dataset()
-val_dataset, _, _ = dsi.get_validation_dataset()
 iterator = train_dataset.make_initializable_iterator()
 datasets = {}
 datasets['train'] = {
@@ -152,8 +150,8 @@ for epoch in range(args.epochs):
         progbar.update(i+1)
 
     if epoch % VALIDATE_EVERY == 0:
-        eval(sess, graph, "val", image_tensor, label_tensor, output_tensor, loss_tensor)
-        saver.save(sess, os.path.join(OUTPUT_PATH, str(epoch), "TB-Net"), global_step=epoch+1, write_meta_graph=False)
+        eval(sess, graph, "val", val_dataset, image_tensor, label_tensor, pred_tensor, loss_tensor)
+        saver.save(sess, os.path.join(OUTPUT_PATH, "Epoch_" + str(epoch), "TB-Net"), global_step=epoch+1, write_meta_graph=False)
         print('Saving checkpoint at epoch {}'.format(epoch + 1))
 
 print("Optimization Finished!")

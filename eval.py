@@ -82,11 +82,11 @@ def eval(sess, graph):
 
 
 sess = tf.Session()
-tf.get_default_graph()
 saver = tf.train.import_meta_graph(os.path.join(args.weightspath, args.metaname))
-saver.restore(sess, os.path.join(args.weightspath, args.ckptname))
 
 graph = tf.get_default_graph()
+
+saver.restore(sess, os.path.join(args.weightspath, args.ckptname))
 
 dsi = TBNetDSI(data_path=args.datapath)
 test_dataset, _, _ = dsi.get_test_dataset()
