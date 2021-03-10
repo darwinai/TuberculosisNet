@@ -12,7 +12,7 @@ If using the TF checkpoints, here are some useful tensors:
 If using the provided [dataset interface script](../dsi,py), modify the CSV paths accordingly, to point at where the files 'train_split.csv', 'val_split.csv', and 'test_split.csv' are on your system.
 
 ## Training
-We provide a [training script](../train_tbnet.py) that can be used for model fine-tuning.
+We provide a [training script](../train_tbnet.py) that can be used for model training using an untrained model. We provide an *untrained* version of TB-Net [here](https://drive.google.com/drive/folders/1z5SI7qTlrd1pjqx0V6HOm_jNZskW15ln?usp=sharing).
 
 Example command:
 ```

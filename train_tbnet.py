@@ -1,5 +1,5 @@
 '''
-Trains TB-Net
+Trains an untrained version of TB-Net
 
 python3 train_tbnet.py \
     --weightspath 'TB-Net' \
