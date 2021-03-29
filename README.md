@@ -1,5 +1,10 @@
 # Tuberculosis-Net (TB-Net) #
 
+<p align="center">
+	<img src="assets/tbnet_logo.png" alt="TuberculosisNet Logo" width="25%" height="25%">
+	<br>
+</p>
+
 **Note: The TB-Net model provided here is intended to be used as a reference model that can be built upon and enhanced as new data becomes available. It is currently at a research stage and not yet intended as a production-ready model (not meant for direct clinical diagnosis), and we are working continuously to improve it as new data becomes available. Please do not use TB-Net for self-diagnosis and seek help from your local health authorities.**
 
 <p align="center">
@@ -8,7 +13,9 @@
 	<em>Example chest x-ray images from 3 different patients, and their associated critical factors (highlighted in white) as identified by GSInquire. In this example, all three lungs have been diagnosed with tuberculosis.</em>
 </p>
 
-Tuberculosis (TB) that remains a global health problem to this very day, and is the leading cause of death from an infectious disease.  A crucial step in the treatment of tuberculosis is screening high risk populations and early detection of the disease, with chest x-ray (CXR) imaging being the most widely-used imaging modality.  As such, there has been significant recent interest in artificial intelligence-based TB screening solutions for use in resource-limited scenarios where there is a lack of trained healthcare workers with expertise in CXR interpretation. Motivated by this pressing need, we introduce TB-Net, a self-attention deep convolutional neural network tailored for TB case screening. More specifically, machine-driven design exploration was leveraged to build a highly customized deep neural network architecture with attention condensers. An explainability-driven performance validation process was conducted to validate the decision-making behaviour of TB-Net.  Experiments using the Tuberculosis Chest X-Ray benchmark dataset showed that the proposed TB-Net is able to achieve accuracy/sensitivity/PPV of 99.86%/100.0%/99.71%.  We hope that the release of TB-Net will support researchers, clinicians, and citizen data scientists in advancing this field.
+Tuberculosis (TB) that remains a global health problem to this very day, and is the leading cause of death from an infectious disease.  A crucial step in the treatment of tuberculosis is screening high risk populations and early detection of the disease, with chest x-ray (CXR) imaging being the most widely-used imaging modality.  As such, there has been significant recent interest in artificial intelligence-based TB screening solutions for use in resource-limited scenarios where there is a lack of trained healthcare workers with expertise in CXR interpretation. Motivated by this pressing need, we introduce TB-Net, a self-attention deep convolutional neural network tailored for TB case screening. More specifically, machine-driven design exploration was leveraged to build a highly customized deep neural network architecture with attention condensers. An explainability-driven performance validation process was conducted to validate the decision-making behaviour of TB-Net.  Experiments using the Tuberculosis Chest X-Ray benchmark dataset showed that the proposed TB-Net is able to achieve accuracy/sensitivity/PPV of 99.86%/100.0%/99.71%.  We hope that the release of TB-Net will support researchers, clinicians, and citizen data scientists in advancing this field. 
+
+The World Health Organization (WHO) recently introduced a new recommendation that, for those aged 15 years and older in populations in which TB screening is recommended, computer-aided detection (CAD) approaches may be used in place of human readers for interpreting digital chest X-rays for screening and triaging TB. https://apps.who.int/iris/bitstream/handle/10665/340255/9789240022676-eng.pdf
 
 If there are any technical questions after the README, FAQ, and past/current issues have been read, please post an issue or contact:
 * james.lee@darwinai.ca
@@ -44,14 +51,18 @@ The test dataset contains 348 normal samples, and 345 tuberculosis samples.
 
 <div class="tg-wrap"><table class="tg">
   <tr>
-    <th class="tg-7btt" colspan="3">TB-Net Performance</th>
+    <th class="tg-7btt" colspan="3">TB-Net Details</th>
   </tr>
   <tr>
     <td class="tg-7btt">Sensitivity</td>
     <td class="tg-7btt">Specificity</td>
+    <td class="tg-7btt"># Params (M)</td>
+    <td class="tg-7btt">MACs (G)</td>  
   </tr>
   <tr>
     <td class="tg-c3ow">100.0</td>
     <td class="tg-c3ow">99.71</td>
+    <td class="tg-c3ow">4.24</td>
+    <td class="tg-c3ow">0.42</td>
   </tr>
 </table></div>
