@@ -19,7 +19,7 @@ Example command:
 python3 train_tbnet.py \
     --weightspath 'TB-Net' \
     --metaname model_train.meta \
-    --ckptname model-69300 \
+    --ckptname model \
     --datapath 'data/' \
     --epochs 10 
 ```
@@ -32,7 +32,7 @@ Example command:
 python3 eval.py \
     --weightspath 'TB-Net' \
     --metaname model_eval.meta \
-    --ckptname model-69300 \
+    --ckptname model \
     --datapath 'data/' \
 ```
 
@@ -46,6 +46,6 @@ Example command:
 python3 inference.py \
     --weightspath 'TB-Net' \
     --metaname model_eval.meta \
-    --ckptname model-69300 \
+    --ckptname model \
     --inputpath 'example_inputs/'
 ```
