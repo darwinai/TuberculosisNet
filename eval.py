@@ -8,7 +8,7 @@ Example command:
 python3 eval.py \
     --weightspath 'TB-Net' \
     --metaname model_eval.meta \
-    --ckptname model-69300 \
+    --ckptname model \
     --datapath 'data/'
 '''
 
@@ -31,7 +31,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 parser = argparse.ArgumentParser(description='TB-Net Evaluation')
 parser.add_argument('--weightspath', default='TB-Net', type=str, help='Path to checkpoint folder')
 parser.add_argument('--metaname', default='model_eval.meta', type=str, help='Name of ckpt meta file')
-parser.add_argument('--ckptname', default='model-69300', type=str, help='Name of model ckpt')
+parser.add_argument('--ckptname', default='model', type=str, help='Name of model ckpt')
 parser.add_argument('--datapath', default='data/', type=str, help='Root folder containing the dataset')
 
 args = parser.parse_args()

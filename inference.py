@@ -7,7 +7,7 @@ Example command:
 python3 inference.py \
     --weightspath 'TB-Net' \
     --metaname model_eval.meta \
-    --ckptname model-69300 \
+    --ckptname model \
     --inputpath 'example_inputs/'
 '''
 
@@ -35,7 +35,7 @@ mapping = {0: "Normal", 1: "Tuberculosis"}
 parser = argparse.ArgumentParser(description='TB-Net Inference')
 parser.add_argument('--weightspath', default='TB-Net', type=str, help='Path to checkpoint folder')
 parser.add_argument('--metaname', default='model_eval.meta', type=str, help='Name of ckpt meta file')
-parser.add_argument('--ckptname', default='model-69300', type=str, help='Name of model ckpt')
+parser.add_argument('--ckptname', default='model', type=str, help='Name of model ckpt')
 parser.add_argument('--inputpath', default='example_inputs/', type=str, help='Full path to folder containing images')
 
 args = parser.parse_args()

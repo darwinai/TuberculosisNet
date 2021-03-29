@@ -4,7 +4,7 @@ Trains an untrained version of TB-Net
 python3 train_tbnet.py \
     --weightspath 'TB-Net' \
     --metaname model_train.meta \
-    --ckptname model-69300 \
+    --ckptname model \
     --datapath 'data/' \
     --epochs 10 
 '''
@@ -30,7 +30,7 @@ PREDICTION_TENSOR = "ArgMax:0"
 parser = argparse.ArgumentParser(description='TB-Net Training')
 parser.add_argument('--weightspath', default='TB-Net', type=str, help='Path to checkpoint folder')
 parser.add_argument('--metaname', default='model_train.meta', type=str, help='Name of ckpt meta file')
-parser.add_argument('--ckptname', default='model-69300', type=str, help='Name of model ckpt')
+parser.add_argument('--ckptname', default='model', type=str, help='Name of model ckpt')
 parser.add_argument('--datapath', default='data/', type=str, help='Root folder containing the dataset')
 parser.add_argument('--epochs', default=10, type=int, help='Number of epochs')
 parser.add_argument('--lr', default=0.0001, type=float, help='Learning rate')
