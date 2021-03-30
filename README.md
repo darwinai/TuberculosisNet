@@ -34,7 +34,14 @@ The main requirements are listed below. A full list can be found in "requirement
 * Tested with Tensorflow 1.15
 * OpenCV 4.5.1
 * Python 3.6
-* Numpy 1.20.0
+* Numpy 1.19.5
+* Scikit-Learn 0.24.1
+
+For OpenCV, you may need to install some system dependencies:
+`apt-get install -y --no-install-recommends libgl1-mesa-glx libglib2.0-0`
+
+Python pacakges can be installed with:
+`python3 -m pip install -r requirements.txt`
 
 ## Dataset Recreation ##
 
