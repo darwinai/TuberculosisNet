@@ -120,8 +120,10 @@ sess.run(init)
 saver.restore(sess, os.path.join(args.weightspath, args.ckptname))
 
 # save base model
-saver.save(sess, os.path.join(OUTPUT_PATH, "Baseline/TB-Net"))
-print('Saved baseline checkpoint')
+save_path = os.path.join(OUTPUT_PATH, "Baseline/TB-Net")
+os.makedirs(save_path, exist_ok=True)
+saver.save(sess, save_path)
+print('Saved baseline checkpoint to {}.'.format(save_path))
 print('Baseline eval:')
 
 eval(sess, graph, "test", test_dataset, image_tensor, label_tensor, pred_tensor, loss_tensor)
