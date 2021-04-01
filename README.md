@@ -61,12 +61,14 @@ The test dataset contains 348 normal samples and 345 tuberculosis samples.
     <th class="tg-7btt" colspan="3">TB-Net Details</th>
   </tr>
   <tr>
+    <td class="tg-7btt">Accuracy</td>  
     <td class="tg-7btt">Sensitivity</td>
     <td class="tg-7btt">Specificity</td>
     <td class="tg-7btt"># Params (M)</td>
     <td class="tg-7btt">MACs (G)</td>  
   </tr>
   <tr>
+    <td class="tg-c3ow">99.86</td>
     <td class="tg-c3ow">100.0</td>
     <td class="tg-c3ow">99.71</td>
     <td class="tg-c3ow">4.24</td>
