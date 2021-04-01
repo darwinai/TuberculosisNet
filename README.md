@@ -58,7 +58,7 @@ The test dataset contains 348 normal samples and 345 tuberculosis samples.
 
 <div class="tg-wrap"><table class="tg">
   <tr>
-    <th class="tg-7btt" colspan="3">TB-Net Details</th>
+    <th class="tg-7btt" colspan="5">TB-Net Details</th>
   </tr>
   <tr>
     <td class="tg-7btt">Accuracy</td>  
