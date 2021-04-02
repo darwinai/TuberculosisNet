@@ -31,8 +31,9 @@ if not os.path.exists(args.outputpath):
 
 # Grab all the images from both folders.
 filenames = []
-for filename in glob.glob1(os.path.join(args.datapath, 'Normal'), '*.jpg'):
+for filename in glob.glob1(os.path.join(args.datapath, 'Normal'), '*.png'):
     filenames.append( os.path.join(args.datapath, 'Normal', filename) )
+
 for filename in glob.glob1(os.path.join(args.datapath, 'Tuberculosis'), '*.png'):
     filenames.append( os.path.join(args.datapath, 'Tuberculosis', filename) )
 
