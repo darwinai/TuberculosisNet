@@ -17,6 +17,8 @@ Tuberculosis (TB) remains a global health problem, and is the leading cause of d
 
 The World Health Organization (WHO) recently introduced a new recommendation that, for those aged 15 years and older in populations in which TB screening is recommended, computer-aided detection (CAD) approaches may be used in place of human readers for interpreting digital chest X-rays for screening and triaging TB. https://apps.who.int/iris/bitstream/handle/10665/340255/9789240022676-eng.pdf
 
+For a more detailed description of the methodology behind TB-Net, please click [here](docs/TBNet.pdf).
+
 If there are any technical questions after the README, FAQ, and past/current issues have been read, please post an issue or contact:
 * james.lee@darwinai.ca
 
