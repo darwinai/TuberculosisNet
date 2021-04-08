@@ -22,6 +22,19 @@ For a more detailed description of the methodology behind TB-Net, please click [
 If there are any technical questions after the README, FAQ, and past/current issues have been read, please post an issue or contact:
 * james.lee@darwinai.ca
 
+If you find our work useful, you can cite our paper using:
+
+```
+@misc{wong2021tbnet,
+      title={TB-Net: A Tailored, Self-Attention Deep Convolutional Neural Network Design for Detection of Tuberculosis Cases from Chest X-ray Images}, 
+      author={Alexander Wong and James Ren Hou Lee and Hadi Rahmat-Khah and Ali Sabri and Amer Alaref},
+      year={2021},
+      eprint={2104.03165},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV}
+}
+```
+
 ## Table of Contents ##
 1. [Requirements](#requirements) to install on your system
 2. [Dataset recreation](#dataset-recreation)
